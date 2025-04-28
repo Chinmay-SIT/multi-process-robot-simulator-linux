@@ -50,7 +50,8 @@ real-time.
 • Data Structures:• Robot Structure: Contains the robot’s ID, current position (x, y), target position,
 speed, and active status.
 
-![IMG_20250428_143123578_HDR](https://github.com/user-attachments/assets/92fa22a4-1e01-4be7-b348-57c770213c71)
+<img src="https://github.com/user-attachments/assets/92fa22a4-1e01-4be7-b348-57c770213c71" width="400" height="300">
+
 
 
 ## 3. Implementation
