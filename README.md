@@ -109,10 +109,13 @@ challenge that required fine-tuning to prevent the robots from moving too quickl
 Additionally, as the number of robots or complexity of the grid increased, the system’s performance
 could be impacted, especially if the robots were forced to perform multiple backtracking maneuvers
 in tight spaces.
+
 • Ensuring smooth multi-process synchronization to avoid race conditions and ensure correct
 data sharing.
+
 • Fine-tuning the collision avoidance and movement strategy to prevent inefficient
 backtracking and improve robot coordination.
+
 Future improvements could involve refining the collision avoidance logic and exploring more
 sophisticated pathfinding algorithms to reduce movement inefficiencies in complex scenarios.
 
