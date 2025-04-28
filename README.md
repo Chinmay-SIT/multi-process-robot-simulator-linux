@@ -30,3 +30,60 @@ adaptive pathfinding algorithms, and more sophisticated collision avoidance stra
 Additionally, this work contributes to the broader field of multi-agent systems and robotics, with
 potential applications in areas like warehouse automation, autonomous vehicles, and collaborative
 robotics.
+
+## 2. System Design
+• Overall Architecture: The system architecture includes the following components:
+• Shared Memory: Used to store robot positions and other relevant state information.
+It allows multiple robot processes to access and update the data.
+• Semaphores: Used for synchronizing access to the shared memory to ensure that
+robots do not overwrite each other’s data simultaneously.
+• Robot Processes: Each robot is modeled as a separate child process. These processes
+update the robot's position and check for collisions with other robots.
+• Grid Display: The grid is displayed in the terminal with robot positions shown in
+real-time.
+• Data Structures:• Robot Structure: Contains the robot’s ID, current position (x, y), target position,
+speed, and active status.
+
+![IMG_20250428_143123578_HDR](https://github.com/user-attachments/assets/92fa22a4-1e01-4be7-b348-57c770213c71)
+
+
+## 3. Implementation
+• Robot Movement Algorithm:
+• Each robot moves towards its target position using basic movement logic (up, down,
+left, right).
+• Robots avoid collisions by checking the distance to other robots before moving. If
+another robot is too close, the robot attempts to find an alternate safe direction.
+• If no safe direction is found, the robot pauses and retries later.
+• Inter-Process Communication (IPC):
+• Shared memory is used to store the robot positions and state information, allowing
+each robot process to access the data concurrently.
+• Semaphores are used to ensure mutual exclusion when accessing and modifying
+shared memory, preventing race conditions.
+• Collision Detection:
+• Robots calculate the Euclidean distance between themselves and other robots before
+moving. If the distance is below a predefined threshold (SAFE_DISTANCE), a
+collision is detected.
+• If a robot encounters a collision, it tries to back off or find an alternate safe path by
+checking available movement options (up, down, left, right).
+• Simulation Flow:
+• The program initializes the robots, assigns random start and target positions, and
+creates child processes for each robot.
+• The robots continuously move towards their target positions, update the grid display,
+and check for collisions. The simulation ends when all robots reach their targets.
+
+## 4. Results and Discussion
+The simulation of the multi-process robot system was successfully implemented, and the
+robots were able to navigate the grid while avoiding collisions with one another. Each robot, upon
+starting, was assigned a target position on the grid, and they moved towards their targets in a
+coordinated manner. The robots communicated indirectly via semaphores to prevent race conditions
+when accessing the shared memory, ensuring that only one robot could update its position at a time.
+The robots utilized a simple movement strategy, where they calculated the direction towards their
+target and moved one step at a time. In case of a potential collision with another robot, the system
+checked the distance between them. If the robots were too close, the moving robot either paused for
+a brief moment or attempted an alternate route to avoid the collision. The system performed well in
+situations where multiple robots had to navigate the grid simultaneously, adjusting their paths
+dynamically to prevent interference. The simulation also included a delay between movements to
+simulate smooth motion, enhancing the realism of the process. The robots reached their targets
+successfully without significant issues, and the simulation ran as expected with minimal collisions,
+which were handled effectively. The overall performance of the system demonstrated the potential
+of multi-process coordination and collision avoidance in dynamic environments.
