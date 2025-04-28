@@ -32,15 +32,21 @@ potential applications in areas like warehouse automation, autonomous vehicles, 
 robotics.
 
 ## 2. System Design
+
 • Overall Architecture: The system architecture includes the following components:
+
 • Shared Memory: Used to store robot positions and other relevant state information.
 It allows multiple robot processes to access and update the data.
+
 • Semaphores: Used for synchronizing access to the shared memory to ensure that
 robots do not overwrite each other’s data simultaneously.
+
 • Robot Processes: Each robot is modeled as a separate child process. These processes
 update the robot's position and check for collisions with other robots.
+
 • Grid Display: The grid is displayed in the terminal with robot positions shown in
 real-time.
+
 • Data Structures:• Robot Structure: Contains the robot’s ID, current position (x, y), target position,
 speed, and active status.
 
@@ -48,26 +54,39 @@ speed, and active status.
 
 
 ## 3. Implementation
+
 • Robot Movement Algorithm:
+
 • Each robot moves towards its target position using basic movement logic (up, down,
 left, right).
+
 • Robots avoid collisions by checking the distance to other robots before moving. If
 another robot is too close, the robot attempts to find an alternate safe direction.
+
 • If no safe direction is found, the robot pauses and retries later.
+
 • Inter-Process Communication (IPC):
+
 • Shared memory is used to store the robot positions and state information, allowing
 each robot process to access the data concurrently.
+
 • Semaphores are used to ensure mutual exclusion when accessing and modifying
 shared memory, preventing race conditions.
+
 • Collision Detection:
+
 • Robots calculate the Euclidean distance between themselves and other robots before
 moving. If the distance is below a predefined threshold (SAFE_DISTANCE), a
 collision is detected.
+
 • If a robot encounters a collision, it tries to back off or find an alternate safe path by
 checking available movement options (up, down, left, right).
+
 • Simulation Flow:
+
 • The program initializes the robots, assigns random start and target positions, and
 creates child processes for each robot.
+
 • The robots continuously move towards their target positions, update the grid display,
 and check for collisions. The simulation ends when all robots reach their targets.
 
