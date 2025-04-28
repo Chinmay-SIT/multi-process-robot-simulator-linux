@@ -114,6 +114,9 @@ effectiveness of the implemented collision avoidance and movement strategies. Th
 highlights the potential for real-world applications where robots need to operate in a shared
 environment with limited space, successfully completing their tasks without interference.
 
+![image](https://github.com/user-attachments/assets/4ec023d4-aaa2-49a2-b16e-fe58b5ebce2a)
+
+
 ## 4. Challenges
 During the development and simulation of the multi-process robot system, several
 challenges were encountered. One of the primary challenges was ensuring that the robots moved
